@@ -6,8 +6,8 @@ spark = SparkSession.builder.appName("NetflixALS").getOrCreate()
 
 # Define schema
 schema = StructType([
-    StructField("MovieID", IntegerType(), False),
     StructField("CustomerID", IntegerType(), False),
+    StructField("MovieID", IntegerType(), False),
     StructField("Rating", FloatType(), False)
 ])
 
@@ -66,8 +66,9 @@ recs_with_titles = user_recs_exploded.join(movies_df, "MovieID").select("Custome
 recs_with_titles.show(5)
 
 # debug
-
+'''
 movies_df.printSchema()
 movies_df.show()
 user_recs_exploded.select("MovieID").distinct().show(10)
 movies_df.select("MovieID").distinct().show(10)
+'''
